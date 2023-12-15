@@ -2,6 +2,8 @@
 
 Make sure you have PHP installed on your system.
 Make sure you have Composer installed on your system.
+Make sure you have Apache installed on your system.
+Make sure you have MySQL installed on your system.
 
 
 ## Usage
