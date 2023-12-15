@@ -1,9 +1,13 @@
 <?php
-use Modules\Users\Controller as UsersController;
+
+use Modules\Converter\Controllers\Index as ConverterController;
+use Modules\Users\Controllers\Auth as AuthController;
+use Modules\Users\Controllers\Logout as LogoutController;
+use Modules\Users\Controllers\Register as RegisterController;
+use System\Exceptions\AuthException;
 use System\Router;
 use System\Template;
 
-require_once 'init.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
 try {
@@ -14,7 +18,10 @@ try {
     $router = new Router($_ENV['BASE_URL']);
     // $i = '[1-9]+\d*';
 	// $map = [ 1 => 'id' ];
-	$router->addRoute('/^$/', UsersController::class);
+	$router->addRoute('/^$/', AuthController::class, 'login');
+	$router->addRoute('/^home$/', ConverterController::class);
+	$router->addRoute('/^register$/', RegisterController::class, 'register');
+    $router->addRoute('/^logout$/', LogoutController::class,'logout');
     
     $uri = $_SERVER['REQUEST_URI'];
 	$activeRoute = $router->resolvePath($uri);
@@ -24,9 +31,14 @@ try {
 
 	$c->$m();
 	$html = $c->render();
+    // echo password_hash("12345", PASSWORD_DEFAULT);
+    // session_unset();
 	echo $html;
 
 
+} catch (AuthException $e) {
+    header("Location: " . $_ENV['BASE_URL']);
+	exit();
 } catch (Exception $e) {
     prettyPrint($e->getMessage());
 }

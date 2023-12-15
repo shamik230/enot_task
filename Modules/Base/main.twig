@@ -7,13 +7,17 @@
 	<title>{{ title }}</title>
 </head>
 <body>
-	head
+	<h1>Converter</h1>
 	<hr>
-	<a href="{{ baseUrl }}">Home</a> 
-	<a href="{{ baseUrl }}article/add">Add article</a>
+	{% if isAuth %}
+		<a href="{{ baseUrl }}home">Home</a> |
+		<a href="{{ baseUrl }}logout">Log out</a> |
+	{% else %}
+		<a href="{{ baseUrl }}">Login</a> |
+		<a href="{{ baseUrl }}register">Register</a> |
+	{% endif %}
 	<hr>
 	{{ content }}
 	<hr>
-	footer
 </body>
 </html>

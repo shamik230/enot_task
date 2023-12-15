@@ -46,23 +46,38 @@ class __TwigTemplate_a13cf9d091e9a93c57c82aa316bf9f2b extends Template
         echo "</title>
 </head>
 <body>
-\thead
-\t<hr>
-\t<a href=\"";
-        // line 12
-        echo ($context["baseUrl"] ?? null);
-        echo "\">Home</a> 
-\t<a href=\"";
-        // line 13
-        echo ($context["baseUrl"] ?? null);
-        echo "article/add\">Add article</a>
+\t<h1>Converter</h1>
 \t<hr>
 \t";
-        // line 15
+        // line 12
+        if (($context["isAuth"] ?? null)) {
+            // line 13
+            echo "\t\t<a href=\"";
+            echo ($context["baseUrl"] ?? null);
+            echo "home\">Home</a> |
+\t\t<a href=\"";
+            // line 14
+            echo ($context["baseUrl"] ?? null);
+            echo "logout\">Log out</a> |
+\t";
+        } else {
+            // line 16
+            echo "\t\t<a href=\"";
+            echo ($context["baseUrl"] ?? null);
+            echo "\">Login</a> |
+\t\t<a href=\"";
+            // line 17
+            echo ($context["baseUrl"] ?? null);
+            echo "register\">Register</a> |
+\t";
+        }
+        // line 19
+        echo "\t<hr>
+\t";
+        // line 20
         echo ($context["content"] ?? null);
         echo "
 \t<hr>
-\tfooter
 </body>
 </html>";
     }
@@ -88,7 +103,7 @@ class __TwigTemplate_a13cf9d091e9a93c57c82aa316bf9f2b extends Template
      */
     public function getDebugInfo()
     {
-        return array (  62 => 15,  57 => 13,  53 => 12,  45 => 7,  37 => 1,);
+        return array (  78 => 20,  75 => 19,  70 => 17,  65 => 16,  60 => 14,  55 => 13,  53 => 12,  45 => 7,  37 => 1,);
     }
 
     public function getSourceContext()

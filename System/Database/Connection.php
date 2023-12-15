@@ -32,9 +32,9 @@ class Connection
         ]);
     }
 
-    public function select(string $query, array $params = []) : ?array{
-		return $this->query($query, $params)->fetchAll();
-	}
+    // public function select(string $query, array $params = []) : ?array{
+	// 	return $this->query($query, $params)->fetchAll();
+	// }
 
 	public function query(string $query, array $params = []) : PDOStatement{
 		$query = $this->db->prepare($query);
